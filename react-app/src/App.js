@@ -1,10 +1,9 @@
-import Button from "react-bootstrap/Button";
+import NavComp from "./ContainerComponent/Navigate";
 
 function App() {
   return (
     <>
-      <div className="App">This is my text</div>
-      <Button>Primary</Button>
+      <NavComp />
     </>
   );
 }
