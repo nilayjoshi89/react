@@ -2,71 +2,15 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import BasicFunctComponent from "./../BasicComponent/FunctComponent";
-import BasicClassComponent from "./../BasicComponent/ClassComponent";
-import BasicComponentWithState from "./../BasicComponent/ComponentWithState";
-import ComponentCard from "./../BasicComponent/ComponentCard";
-import BasicComponentWithArg from "./../BasicComponent/ComponentWithArg";
-import BasicComponentWithCallback from "./../BasicComponent/ComponentWithCallback";
+import getSampleComponentData from "./../Data/SampleComponentData";
+
 import { useState } from "react";
 
 function Navigate() {
   const [currentDisplayKey, setCurrentDisplayKey] = useState(-1);
-  const sampleComponents = [
-    {
-      key: "1",
-      value: (
-        <ComponentCard
-          Title="Basic Function Component"
-          Text=""
-          GetComponent={() => <BasicFunctComponent />}
-        />
-      ),
-    },
-    {
-      key: "2",
-      value: (
-        <ComponentCard
-          Title="Basic Class Component"
-          Text=""
-          GetComponent={() => <BasicClassComponent />}
-        />
-      ),
-    },
-    {
-      key: "3",
-      value: (
-        <ComponentCard
-          Title="Component with State"
-          Text=""
-          GetComponent={() => <BasicComponentWithState />}
-        />
-      ),
-    },
-    {
-      key: "4",
-      value: (
-        <ComponentCard
-          Title="Component with Arguments"
-          Text=""
-          GetComponent={() => <BasicComponentWithArg />}
-        />
-      ),
-    },
-    {
-      key: "5",
-      value: (
-        <ComponentCard
-          Title="Component with Callback"
-          Text=""
-          GetComponent={() => <BasicComponentWithCallback />}
-        />
-      ),
-    },
-  ];
 
   const getDisplay = (key) => {
-    let compToFind = sampleComponents.find((i) => i.key === key);
+    let compToFind = getSampleComponentData().find((i) => i.key === key);
     if (compToFind === undefined) {
       return "Nothing to display";
     }
@@ -117,6 +61,26 @@ function Navigate() {
                   onClick={() => setCurrentDisplayKey("5")}
                 >
                   Comp. w/ Callback
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Hooks" id="basic-nav-dropdown">
+                <NavDropdown.Item
+                  href="#home"
+                  onClick={() => setCurrentDisplayKey("6")}
+                >
+                  useState
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="#home"
+                  onClick={() => setCurrentDisplayKey("7")}
+                >
+                  useEffect
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="#home"
+                  onClick={() => setCurrentDisplayKey("8")}
+                >
+                  useReducer
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
